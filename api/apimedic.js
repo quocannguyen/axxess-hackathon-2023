@@ -1,7 +1,7 @@
 const APIMEDIC_AUTH_TOKEN = process.env.APIMEDIC_AUTH_TOKEN
 
 if (!APIMEDIC_AUTH_TOKEN) {
-    throw new Error("Please define the AUTH_TOKEN inside .env.local")
+    throw new Error("Please define APIMEDIC_AUTH_TOKEN in .env.local")
 }
 
 const Genders = {
