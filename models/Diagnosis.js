@@ -1,4 +1,6 @@
-class Diagnosis {
+import {Issue} from "./Issue";
+
+export class Diagnosis {
     constructor(issue, accuracy, icdCodes, icdNames, profName, ranking) {
         this.issue = issue
         this.accuracy = accuracy
