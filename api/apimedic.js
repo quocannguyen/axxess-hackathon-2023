@@ -1,6 +1,6 @@
-const AUTH_TOKEN = process.env.AUTH_TOKEN
+const APIMEDIC_AUTH_TOKEN = process.env.APIMEDIC_AUTH_TOKEN
 
-if (!AUTH_TOKEN) {
+if (!APIMEDIC_AUTH_TOKEN) {
     throw new Error("Please define the AUTH_TOKEN inside .env.local")
 }
 
@@ -10,7 +10,7 @@ const Genders = {
 }
 
 function getDiagnosis(symptomIds, gender, yearOfBirth) {
-    let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptomIds.toString()}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${AUTH_TOKEN}&format=json&language=en-gb`
+    let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptomIds.toString()}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${APIMEDIC_AUTH_TOKEN}&format=json&language=en-gb`
     fetch(url, {
         method: "GET",
         headers: {
