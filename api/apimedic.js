@@ -19,6 +19,9 @@ function getDiagnosis(symptomIds, gender, yearOfBirth) {
     })
         .then(response => response.json())
         .then(response => {
-            console.log(JSON.stringify(response))
+            response.forEach(element => {
+                let diagnosis = Diagnosis.getFromJson(element)
+                console.log(diagnosis)
+            })
         })
 }
