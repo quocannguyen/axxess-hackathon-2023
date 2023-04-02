@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import { BackButton } from '../components/back_button';
 import { DropDownMenu } from '../components/drop_down';
 import { DiagnoseButton } from '../components/diagnose_button';
@@ -33,13 +33,16 @@ export default function Symptoms() {
             </View>
             <View style={styles.Background_Top_Layer}>
                 <View style={styles.Top_Layer_Window}>
-                    {chosenSymptomsState.map((value, i) => {
-                        return (
-                            <View key={value + i}>
-                                <Text>{getNameById(value)}</Text>
-                            </View>
-                        )
-                    })}
+                    <ScrollView contentContainerStyle={{height: '100%'}}>
+                        {chosenSymptomsState.map((value, i) => {
+                            return (
+                                <View key={value + i}>
+                                    <Text style={styles.Top_Layer_Text}>{getNameById(value)}</Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
+
                 </View>
                 <View style={styles.DiagnoseButton_Image}>
                     <DiagnoseButton
@@ -81,16 +84,13 @@ const styles = StyleSheet.create({
     },
     Top_Layer_Window: {
         backgroundColor: '#9A98ED',
-        aspectRatio: 358/250,
+        width: '80%',
+        height: '60%',
         position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        marginLeft: 0.1 * screenWidth,
-        marginRight: 0.1 * screenWidth,
-        marginTop: 0.05 * screenHeight,
+        top: '5%',
+        left: '10%',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     BackButton_Image: {
         width: '10%', // adjust this value as needed
@@ -121,5 +121,8 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginTop: 0.33 * screenHeight,
         marginLeft: 0.03 * screenWidth,
+    },
+    Top_Layer_Text: {
+      fontSize: 20,
     },
 });
