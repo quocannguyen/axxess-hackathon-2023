@@ -20,7 +20,7 @@ export default function PersonalizeScreen(){
                 <View style={styles.RecommendationsTop}>
                 </View>
             </View>
-            <View style={styles.Scroll}>                
+            <View style={styles.Scroll}>
             </View>
             <View style={styles.PersonalizedList}>
                 <View>
@@ -70,9 +70,12 @@ const styles = StyleSheet.create({
         borderTopRightRadius: '30%',
     },
     Scroll: {
+        fontSize: '24',
+        alignSelf: 'center',
         marginTop: '4%',
         height: '30%',
-        backgroundColor: "white",
+        padding: '5%',
+        backgroundColor: "black",
         borderWidth: 1,
         borderBottomRightRadius: '30%',
         borderBottomLeftRadius: '30%',
@@ -101,8 +104,23 @@ const styles = StyleSheet.create({
     },
     Container: {
         borderWidth: '150%',
+        fontSize: '20%',
+        fontWeight: 700,
         Width: '100%',
-        backgroundColor: "grey",
+        height: '86%',
+        padding: '5%',
+        backgroundColor: "black",
         Display: "flex",
+    },
+    RecommendationText: {
+        color: "white",
+    },
+    ContainerText: {
+        color: "white",
+    },
+    Wrap: {
+        display: "flex",
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 });
