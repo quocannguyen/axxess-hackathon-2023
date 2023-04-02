@@ -2,13 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BackButton } from '../components/back_button';
 import {CHOSEN_SYMPTOMS} from "../symptomAPI/symtom-data";
+import {useState} from "react";
+import {DIAGNOSIS_LIST, Genders, getDiagnosis} from "../api/apimedic";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const buttonWidth = screenWidth * 0.65;
 
-export default function PersonalizeScreen(props){
-    console.log(CHOSEN_SYMPTOMS)
+export default function PersonalizeScreen(){
     return (
         <View style={styles.PersonalizeScreen}>
             <BackButton
@@ -23,6 +24,14 @@ export default function PersonalizeScreen(props){
                 </View>
             </View>
             <View style={styles.Scroll}>
+                {DIAGNOSIS_LIST.map((diagnosis, index) => {
+                    console.log(diagnosis["issue"]["name"])
+                    return (
+                        <View>
+                            <Text>{diagnosis["issue"]["name"]}</Text>
+                        </View>
+                    )
+                })}
             </View>
             <View style={styles.PersonalizedList}>
                 <View>

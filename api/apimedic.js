@@ -5,7 +5,7 @@
 // }
 import {Diagnosis} from "../models/Diagnosis";
 
-const APIMEDIC_AUTH_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InF1b2NhbjI5MTAyMDAwQGdtYWlsLmNvbSIsInJvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMTIwNjQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjMtMDQtMDEiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTY4MDM5ODM4MiwibmJmIjoxNjgwMzkxMTgyfQ.M_y2xyLrd1dE8tkPKgaZFlloP7YZKEdhhS52YeGVY7Q"
+const APIMEDIC_AUTH_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im5pc2hpdGhzYXJtYUBnbWFpbC5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6IjEyMDY1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy92ZXJzaW9uIjoiMjAwIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9saW1pdCI6Ijk5OTk5OTk5OSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbWVtYmVyc2hpcCI6IlByZW1pdW0iLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xhbmd1YWdlIjoiZW4tZ2IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL2V4cGlyYXRpb24iOiIyMDk5LTEyLTMxIiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwc3RhcnQiOiIyMDIzLTA0LTAxIiwiaXNzIjoiaHR0cHM6Ly9zYW5kYm94LWF1dGhzZXJ2aWNlLnByaWFpZC5jaCIsImF1ZCI6Imh0dHBzOi8vaGVhbHRoc2VydmljZS5wcmlhaWQuY2giLCJleHAiOjE2ODA0NDkyODIsIm5iZiI6MTY4MDQ0MjA4Mn0.wf-iUAqBKHWUWGkwTISFJoMK7PiKVK3OMPYWrfmo7XU"
 
 
 export const Genders = {
@@ -14,6 +14,7 @@ export const Genders = {
 }
 
 export function getDiagnosis(symptomIds, gender, yearOfBirth) {
+    console.log(symptomIds)
     let url = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${symptomIds.toString()}]&gender=${gender}&year_of_birth=${yearOfBirth}&token=${APIMEDIC_AUTH_TOKEN}&format=json&language=en-gb`
     fetch(url, {
         method: "GET",
@@ -23,9 +24,13 @@ export function getDiagnosis(symptomIds, gender, yearOfBirth) {
     })
         .then(response => response.json())
         .then(response => {
+            console.log("response " + response)
             response.forEach(element => {
                 let diagnosis = Diagnosis.getFromJson(element)
-                console.log(diagnosis)
+                DIAGNOSIS_LIST.push(diagnosis)
             })
+            console.log(DIAGNOSIS_LIST)
         })
 }
+
+export const DIAGNOSIS_LIST = []
