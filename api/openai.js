@@ -1,5 +1,6 @@
 import { Configuration, OpenAIApi } from "openai"
 
+
 // const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 // if (!OPENAI_API_KEY) {
 //     throw new Error("Please define OPENAI_API_KEY in .env.local")
@@ -14,15 +15,15 @@ const configuration = new Configuration({
     apiKey: OPENAI_API_KEY,
 })
 const openai = new OpenAIApi(configuration)
+
 export async function test() {
     try {
-        const response = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: "Say Say this is a test",
-            max_tokens: 7,
+        const response = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{role: "user", content:"What are some possible home remedies for: abdomen pain"}],
             temperature: 0,
         });
-        console.log(response)
+        console.log(response.data.choices[0].message.content)
     } catch (e) {
         console.log(e)
     }
