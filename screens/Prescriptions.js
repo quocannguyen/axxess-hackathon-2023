@@ -137,4 +137,4 @@ export default function PrescriptionsScreen(){
           fontFamily: "Roboto, sans-serif",
           fontWeight: "600",
         },
-      })
+      });
