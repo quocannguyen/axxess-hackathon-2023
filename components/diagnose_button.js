@@ -1,11 +1,15 @@
-import { Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {Image, View, TouchableOpacity, Text } from 'react-native';
 
-export function DiagnoseButton(props) {
-    const { onPress, imageSource } = props;
+export function Diagnose(props) {
+    const navigation = useNavigation();
+    const {imageSource} = props
   
     return (
-      <TouchableOpacity onPress={onPress}>
-        <Image source={imageSource} />
+       <View>
+      <TouchableOpacity onPress={() => navigation.navigate('Personalize')}>
+        <Image source={imageSource}/>
       </TouchableOpacity>
+    </View>
     );
   }
