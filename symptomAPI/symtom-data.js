@@ -388,3 +388,8 @@ export function getNameById(id) {
     })
     return name
 }
+
+export const CHOSEN_SYMPTOMS = []
+export function addSymptom(id) {
+    CHOSEN_SYMPTOMS.push(id)
+}

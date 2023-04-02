@@ -1,7 +1,7 @@
 import { Image, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useState } from 'react';
-import {SYMPTOMS} from "../symptomAPI/symtom-data";
+import {addSymptom, SYMPTOMS} from "../symptomAPI/symtom-data";
 
 SYMPTOMS.forEach(symptom => {
     symptom["label"] = symptom["Name"]
@@ -25,6 +25,7 @@ export function DropDownMenu(props) {
             onChangeValue={value => {
                 console.log(value)
                 addValueToList(value)
+                addSymptom(value)
             }}
         />
     );

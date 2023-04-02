@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BackButton } from '../components/back_button';
+import {CHOSEN_SYMPTOMS} from "../symptomAPI/symtom-data";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const buttonWidth = screenWidth * 0.65;
 
-export default function PersonalizeScreen(){
+export default function PersonalizeScreen(props){
+    console.log(CHOSEN_SYMPTOMS)
     return (
         <View style={styles.PersonalizeScreen}>
             <BackButton
@@ -70,12 +72,9 @@ const styles = StyleSheet.create({
         borderTopRightRadius: '30%',
     },
     Scroll: {
-        fontSize: '24',
-        alignSelf: 'center',
         marginTop: '4%',
         height: '30%',
-        padding: '5%',
-        backgroundColor: "black",
+        backgroundColor: "white",
         borderWidth: 1,
         borderBottomRightRadius: '30%',
         borderBottomLeftRadius: '30%',
@@ -104,23 +103,8 @@ const styles = StyleSheet.create({
     },
     Container: {
         borderWidth: '150%',
-        fontSize: '20%',
-        fontWeight: 700,
         Width: '100%',
-        height: '86%',
-        padding: '5%',
-        backgroundColor: "black",
+        backgroundColor: "grey",
         Display: "flex",
-    },
-    RecommendationText: {
-        color: "white",
-    },
-    ContainerText: {
-        color: "white",
-    },
-    Wrap: {
-        display: "flex",
-        flexDirection: 'row',
-        flexWrap: 'wrap',
     }
 });

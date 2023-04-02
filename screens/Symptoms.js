@@ -45,6 +45,7 @@ export default function Symptoms() {
                     <DiagnoseButton
                         onPress={() => console.log('Button pressed!')}
                         imageSource={require('../assets/Diagnose_button.png')}
+                        symptoms={chosenSymptomsState}
                     />
                 </View>
             </View>
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     },
     Top_Layer_Window: {
         backgroundColor: '#9A98ED',
-        aspectRatio: 358/327,
+        aspectRatio: 358/250,
         position: 'absolute',
         top: 0,
         bottom: 0,
