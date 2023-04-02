@@ -10,8 +10,8 @@ import { Configuration, OpenAIApi } from "openai"
 //     throw new Error("Please define OPENAI_ORGANIZATION_ID in .env.local")
 // }
 
-const OPENAI_API_KEY= "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"
-const OPENAI_ORGANIZATION_ID = "org-kq6BL5LewDlQcVYdYA1hJrR3"
+const OPENAI_API_KEY="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"
+const OPENAI_ORGANIZATION_ID="org-Pg7mECkb3RR4vUZZipQdocaK"
 
 const configuration = new Configuration({
     organization: OPENAI_ORGANIZATION_ID,
