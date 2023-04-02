@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import {useEffect, useState} from "react";
 import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
-import {getAddresses} from "../api/radar";
+import {getNearbyAddresses} from "../api/radar";
 
 export function AddressList() {
     const [location, setLocation] = useState(null);
@@ -19,7 +19,7 @@ export function AddressList() {
             console.log(location["coords"]["latitude"])
             console.log(location["coords"]["longitude"])
             setLocation(location);
-            getAddresses("hospital", location["coords"]["latitude"], location["coords"]["longitude"])
+            getNearbyAddresses("hospital", location["coords"]["latitude"], location["coords"]["longitude"])
         })();
     }, []);
 

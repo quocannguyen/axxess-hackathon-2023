@@ -1,10 +1,10 @@
 export class Address {
-    constructor(latitude, longitude, layer, formattedAddress, placeLabel) {
+    constructor(latitude, longitude, layer, formattedAddress, label) {
         this.latitude = latitude
         this.longitude = longitude
         this.layer = layer
         this.formattedAddress = formattedAddress
-        this.placeLabel = placeLabel
+        this.label = label
     }
 
     static getFromJson(addressJson) {
@@ -12,7 +12,12 @@ export class Address {
         let longitude = addressJson["longitude"]
         let layer = addressJson["layer"]
         let formattedAddress = addressJson["formattedAddress"]
-        let placeLabel = addressJson["placeLabel"]
-        return new Address(latitude, longitude, layer, formattedAddress, placeLabel)
+        let label = ""
+        if (addressJson["placeLabel"]) {
+            label = addressJson["placeLabel"]
+        } else if (addressJson["addressLabel"]) {
+            label = addressJson["addressLabel"]
+        }
+        return new Address(latitude, longitude, layer, formattedAddress, label)
     }
 }
