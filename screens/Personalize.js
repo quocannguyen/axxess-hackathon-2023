@@ -20,13 +20,19 @@ export default function PersonalizeScreen(){
                 <View style={styles.RecommendationsTop}>
                 </View>
             </View>
-            <View style={styles.Scroll}>                
+            <View style={styles.Scroll}>
+                <Text style={styles.RecommendationText}>Hey this shows up</Text>  
+                <View style={styles.Scroll}>              
+                </View>
             </View>
             <View style={styles.PersonalizedList}>
                 <View>
                     <Text style={styles.PersonalizedHeading}>Personalized</Text>
                 </View>
                 <View style={styles.Container}>
+                    <View style={styles.wrap}>
+                        <Text style={styles.ContainerText}>Hey this also shows up but idk how this is gonna work</Text>
+                    </View>
                 </View>
             </View>
         </View>
@@ -59,19 +65,10 @@ const styles = StyleSheet.create({
         fontSize: '24',
         alignSelf: 'center',
     },
-    RecommendationsTop: {
-        borderWidth: 1,
-        width: '100%',
-        height: '%',
-        backgroundColor: "white",
-        borderBottomRightRadius: '30%',
-        borderBottomLeftRadius: '30%',
-        borderTopLeftRadius: '30%',
-        borderTopRightRadius: '30%',
-    },
     Scroll: {
         marginTop: '4%',
         height: '30%',
+        padding: '5%',
         backgroundColor: "black",
         borderWidth: 1,
         borderBottomRightRadius: '30%',
@@ -101,9 +98,21 @@ const styles = StyleSheet.create({
         fontWeight: 700,
     },
     Container: {
-        borderWidth: '150%',
         Width: '100%',
-        backgroundColor: "grey",
+        height: '86%',
+        padding: '5%',
+        backgroundColor: "black",
         Display: "flex",
+    },
+    RecommendationText: {
+        color: "white",
+    },
+    ContainerText: {
+        color: "white",
+    },
+    Wrap: {
+        display: "flex",
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 });
