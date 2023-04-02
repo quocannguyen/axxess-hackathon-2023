@@ -7,7 +7,7 @@ import Prescription from './screens/Prescripton';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
 export default function App() {
   return (
    <NavigationContainer>
