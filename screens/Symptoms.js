@@ -4,11 +4,15 @@ import { Image, TouchableOpacity } from 'react-native';
 import { BackButton } from '../components/back_button';
 import { DropDownMenu } from '../components/drop_down';
 import { DiagnoseButton } from '../components/diagnose_button';
+import {useState} from "react";
+import {getNameById, SYMPTOMS} from "../symptomAPI/symtom-data";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function Symptoms() {
+    const [chosenSymptomsState, setChosenSymptomsState] = useState([])
+
     return (
       <View style={styles.Background}>
         <View style={styles.Group645}>
@@ -23,17 +27,28 @@ export default function Symptoms() {
                 <DropDownMenu
                     onPress={() => console.log('Button pressed!')}
                     imageSource={require('../assets/add_button.png')}
+                    addValueToList={value => {
+                        setChosenSymptomsState(prevState => {
+                            return [...prevState, value]
+                        })
+                    }}
                 />
             </View>
             <View style={styles.Background_Top_Layer}>
+                <View style={styles.Top_Layer_Window}>
+                    {chosenSymptomsState.map(value => {
+                        return (
+                            <View>
+                                <Text>{getNameById(value)}</Text>
+                            </View>
+                        )
+                    })}
+                </View>
                 <View style={styles.DiagnoseButton_Image}>
                     <DiagnoseButton
                         onPress={() => console.log('Button pressed!')}
                         imageSource={require('../assets/Diagnose_button.png')}
                     />
-                </View>
-                <View style={styles.Top_Layer_Window}>
-
                 </View>
             </View>
         </View>
@@ -71,7 +86,7 @@ const styles = StyleSheet.create({
         aspectRatio: 358/327,
         position: 'absolute',
         top: 0,
-        botttom: 0,
+        bottom: 0,
         left: 0,
         right: 0,
         marginLeft: 0.1 * screenWidth,
@@ -105,7 +120,7 @@ const styles = StyleSheet.create({
         lineHeight: screenWidth * 0.12,
         fontFamily: 'Roboto, sans-serif',
         fontWeight: '600',
-        textAlign: 'flex-start',
+        textAlign: 'left',
         marginTop: 0.33 * screenHeight,
         marginLeft: 0.03 * screenWidth,
     },
