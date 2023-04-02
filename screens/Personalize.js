@@ -1,15 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BackButton } from '../components/back_button';
-import {CHOSEN_SYMPTOMS} from "../symptomAPI/symtom-data";
+import {CHOSEN_SYMPTOMS, getNameById} from "../symptomAPI/symtom-data";
 import {useState} from "react";
 import {DIAGNOSIS_LIST, Genders, getDiagnosis} from "../api/apimedic";
+import {getOpenAi, RECOMMEND} from "../api/openai";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const buttonWidth = screenWidth * 0.65;
 
 export default function PersonalizeScreen(){
+    const [recommendState, setRecommendState] = useState("")
+    let symptomNames = CHOSEN_SYMPTOMS.map(id => getNameById(id))
+    getOpenAi(symptomNames).then(r => {})
+
+    console.log("recommend: " + RECOMMEND)
     return (
         <View style={styles.PersonalizeScreen}>
             <BackButton
@@ -17,7 +23,7 @@ export default function PersonalizeScreen(){
                     imageSource={require('../assets/back_button.png')}
             />
             <View> 
-                <Text style={styles.RecommendationsText}>Recommendations</Text>
+                <Text style={styles.RecommendationsText}>Diagnosis</Text>
                 </View>
             <View style={styles.RecommendationsTop}>
                 <View style={styles.RecommendationsTop}>
@@ -37,7 +43,11 @@ export default function PersonalizeScreen(){
                 <View>
                     <Text style={styles.PersonalizedHeading}>Personalized</Text>
                 </View>
-                <View style={styles.Container}>
+                <View>
+                    <View style={styles.wrap}>
+                        <Text style={styles.ContainerText}>{recommendState}</Text>
+                        <Text style={styles.ContainerText}>{RECOMMEND}</Text>
+                    </View>
                 </View>
             </View>
         </View>
@@ -113,7 +123,15 @@ const styles = StyleSheet.create({
     Container: {
         borderWidth: '150%',
         Width: '100%',
-        backgroundColor: "grey",
+        backgroundColor: "white",
         Display: "flex",
+    },
+    ContainerText: {
+        color: "black",
+    },
+    Wrap: {
+        display: "flex",
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 });

@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { DiagnoseButton } from './components/diagnose_button';
 import PersonalizeScreen from './screens/Personalize';
+import "react-native-url-polyfill/auto"
 
 const Stack = createNativeStackNavigator(); 
 export default function App() {
