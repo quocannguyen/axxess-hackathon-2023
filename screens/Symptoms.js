@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Image, TouchableOpacity } from 'react-native';
 import { BackButton } from '../components/back_button';
 import { DropDownMenu } from '../components/drop_down';
-import { DiagnoseButton } from '../components/diagnose_button';
+import { Diagnose} from '../components/diagnose_button';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -15,8 +15,7 @@ export default function Symptoms() {
             <Text style={styles.Symptoms}>Symptoms</Text>
             <View style={styles.BackButton_Image}>
                 <BackButton
-                    onPress={() => console.log('Button pressed!')}
-                    imageSource={require('../assets/back_button.png')}
+                  imageSource={require('../assets/back_button.png')}
                 />
             </View>
             <View style={styles.AddButton_Image}>
@@ -27,7 +26,7 @@ export default function Symptoms() {
             </View>
             <View style={styles.Background_Top_Layer}>
                 <View style={styles.DiagnoseButton_Image}>
-                    <DiagnoseButton
+                    <Diagnose
                         onPress={() => console.log('Button pressed!')}
                         imageSource={require('../assets/Diagnose_button.png')}
                     />
