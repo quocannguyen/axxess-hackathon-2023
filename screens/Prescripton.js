@@ -1,34 +1,86 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BackButton } from '../components/back_button';
+import { TextInput } from 'react-native';
+import { useState } from 'react';
+import { Button } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const buttonWidth = screenWidth * 0.65;
 
-export default function PrescriptionsScreen(){
-    return (
-        <View style={styles.Prescription_add}>
-            <View style={styles.BackButton_Image}>
-                <BackButton
-                    imageSource={require('../assets/back_button.png')}
-                />
-            </View>
-            <View style={styles.Name1}>
-              <Text style={styles.Name}>Name</Text>
-            </View>
-            <View style={styles.Quantity1}>
-              <Text style={styles.Quantity}>Quantity</Text>
-            </View>
-            <View style={styles.Reminder1}>
-              <Text style={styles.Reminder}>Reminder</Text>
-            </View>
-            <View style={styles.Set1}>
-              <Text style={styles.Set}>Set</Text>
-            </View>
-          </View>
-      )
-    }
+export default function Prescription(){
+  const [medicineName, setMedicineName] = useState('');
+  const [pillCount, setPillCount] = useState('');
+  const [reminder, setReminder] = useState('');
+  const [alarmTime, setAlarmTime] = useState('');
+
+  const handleMedicineNameInput = (text) => {
+    setMedicineName(text);
+  };
+
+  const handlePillCountInput = (text) => {
+    setPillCount(text);
+  };
+
+  const handleReminderInput = (text) => {
+    setReminder(text);
+  };
+
+  const handleAlarmTimeInput = (text) => {
+    setAlarmTime(text);
+  };
+
+  const handleSave = () => {
+    console.log('Medicine Name: ' + medicineName);
+    console.log('Pill Count: ' + pillCount);
+    console.log('Reminder: ' + reminder);
+    console.log('Alarm Time: ' + alarmTime);
+
+  };
+
+  return (
+    <View style={styles.Prescription_add}>
+        <View style={styles.Group337}>
+        <View style={styles.BackButton_Image}>
+                    <BackButton
+                        imageSource={require('../assets/back_button.png')}
+                    />
+                </View>
+      <TextInput
+        style={styles.Name1}
+        placeholder="Medicine Name"
+        onChangeText={handleMedicineNameInput}
+        value={medicineName}
+      />
+      <TextInput
+        style={styles.Quantity1}
+        placeholder="Pill Count"
+        onChangeText={handlePillCountInput}
+        value={pillCount}
+      />
+      <TextInput
+        style={styles.Reminder1}
+        placeholder="Reminder"
+        onChangeText={handleReminderInput}
+        value={reminder}
+      />
+      <TextInput
+        style = {styles.Set1}
+        placeholder="Alarm Time (HH:MM)"
+        onChangeText={handleAlarmTimeInput}
+        value={alarmTime}
+      />
+      <Button
+        title="Save"
+        onPress={handleSave}
+      />
+    </View>
+    </View>
+  );
+};
+
+
     
       const styles = StyleSheet.create({
         Prescription_add: {
@@ -52,8 +104,8 @@ export default function PrescriptionsScreen(){
         BackButton_Image: {
             width: '10%',
             position: 'absolute',
-            top: '8%',
-            left: '12%',
+            top: '70%',
+            
           },
         Name1: {
           display: "flex",
