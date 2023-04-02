@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import {Image, View, TouchableOpacity, Text } from 'react-native';
 
-export function Diagnose(props) {
+export function DiagnoseButton(props) {
     const navigation = useNavigation();
     const {imageSource} = props
   

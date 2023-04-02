@@ -33,9 +33,9 @@ export default function Symptoms() {
             </View>
             <View style={styles.Background_Top_Layer}>
                 <View style={styles.Top_Layer_Window}>
-                    {chosenSymptomsState.map(value => {
+                    {chosenSymptomsState.map((value, i) => {
                         return (
-                            <View>
+                            <View key={value + i}>
                                 <Text>{getNameById(value)}</Text>
                             </View>
                         )

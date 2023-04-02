@@ -16,7 +16,7 @@ export default function PersonalizeScreen(){
             <View> 
                 <Text style={styles.RecommendationsText}>Recommendations</Text>
                 </View>
-            <View style={styles.Recommendations}>
+            <View style={styles.RecommendationsTop}>
                 <View style={styles.RecommendationsTop}>
                 </View>
             </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     RecommendationsText: {
         marginTop: '9%',
         fontWeight: 700,
-        fontSize: '24',
+        fontSize: 24,
         alignSelf: 'center',
     },
     RecommendationsTop: {
@@ -90,14 +90,13 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: '30%',
         borderBottomLeftRadius: '30%',
         backgroundColor: "white",
-        display: "flex",
         flexDirection: "column",
         justifyContent: 'flex-start',
         alignItems: 'center',
         gap: '5%',
     },
     PersonalizedHeading: {
-        fontSize: '20%',
+        fontSize: 20,
         fontWeight: 700,
     },
     Container: {
