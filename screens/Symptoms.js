@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Image, TouchableOpacity } from 'react-native';
 import { BackButton } from '../components/back_button';
-import { AddButton } from '../components/drop_down';
+import { DropDownMenu } from '../components/drop_down';
 import { DiagnoseButton } from '../components/diagnose_button';
 
 const screenWidth = Dimensions.get('window').width;
@@ -20,7 +20,7 @@ export default function Symptoms() {
                 />
             </View>
             <View style={styles.AddButton_Image}>
-                <AddButton
+                <DropDownMenu
                     onPress={() => console.log('Button pressed!')}
                     imageSource={require('../assets/add_button.png')}
                 />
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     Background: {
         flex: 1,
         backgroundColor: '#E7D8F2',
-        paddingTop: 0.05 * screenHeight,
+        //paddingTop: 0.05 * screenHeight,
         //paddingBottom: 0.05 * screenHeight,
     },
     Group645: {
@@ -83,15 +83,15 @@ const styles = StyleSheet.create({
         width: '10%', // adjust this value as needed
         aspectRatio: 63 / 67, // maintains the aspect ratio of the image
         position: 'absolute',
-        top: '2.0%',
+        top: '5.0%',
         left: '3.0%',
     },
     AddButton_Image: {
-        width: '80%', 
         position: 'absolute',
         alignSelf: 'center',
-        
-         // align to the right edge
+        top: '15.0%',
+        left: '5.0%',
+        right: '5.0%',
     },
     DiagnoseButton_Image: {
         aspectRatio: 334/99,

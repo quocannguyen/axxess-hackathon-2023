@@ -2,7 +2,7 @@ import { Image, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useState } from 'react';
 
-export function AddButton(props) {
+export function DropDownMenu(props) {
     const[open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
