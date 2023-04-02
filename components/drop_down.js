@@ -3,7 +3,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { useState } from 'react';
 
 export function DropDownMenu(props) {
-    const[open, setOpen] = useState(false);
+  const[open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     {label: 'Apple', value: 'apple'},
