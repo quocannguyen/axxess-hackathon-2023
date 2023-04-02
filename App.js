@@ -1,6 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
+import "react-native-url-polyfill/auto"
 import { StyleSheet, Text, View } from 'react-native';
 import {test} from "./api/openai";
+
+test()
 
 export default function App() {
   return (
