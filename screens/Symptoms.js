@@ -1,11 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { Image, TouchableOpacity } from 'react-native';
 import { BackButton } from '../components/back_button';
 import { DropDownMenu } from '../components/drop_down';
 import { DiagnoseButton } from '../components/diagnose_button';
 import {useState} from "react";
-import {getNameById, SYMPTOMS} from "../symptomAPI/symtom-data";
+import {getNameById} from "../symptomAPI/symtom-data";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -19,8 +17,7 @@ export default function Symptoms() {
             <Text style={styles.Symptoms}>Symptoms</Text>
             <View style={styles.BackButton_Image}>
                 <BackButton
-                    onPress={() => console.log('Button pressed!')}
-                    imageSource={require('../assets/back_button.png')}
+                  imageSource={require('../assets/back_button.png')}
                 />
             </View>
             <View style={styles.AddButton_Image}>
